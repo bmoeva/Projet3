@@ -1,18 +1,22 @@
 // Récupération de la galerie d'image depuis GET/WORKS (http://localhost:5678/api/works)
-const reponse = await fetch("http://localhost:5678/api/works");
-console.log(reponse)
-let projects = await reponse.json()
-console.log(projects)
-genererProjects(projects)
-function genererProjects(projectsaGenerer) {
-    const galerie = document.querySelector(".gallery");
-    for (let i = 0; i < projectsaGenerer.length; i++) {
-        const titre = document.createElement("titre");
+const reponse = await fetch('http://localhost:5678/api/works');
+const works = await reponse.json();
 
-    titre.innerText = projectsaGenerer[i].title;
-    
-    galerie.appendChild(titre);
+genererWorks(works)
+function genererWorks(works){
+    for (let i = 0; i < works.length; i++) {
+
+        const projet = works[i];
+        const divGallery = document.querySelector(".gallery");
+        const worksElement = document.createElement("projet");
+        const imageUrlElement = document.createElement("img");
+        imageUrlElement.src = projet.imageUrl;
+        const titreh2Element = document.createElement("h2");
+        titreh2Element.innerText = projet.title;
+
+        divGallery.appendChild(worksElement);
+        worksElement.appendChild(imageUrlElement);
+        worksElement.appendChild(titreh2Element);
+        
     }
-    
 }
-
