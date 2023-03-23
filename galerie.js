@@ -11,12 +11,12 @@ function genererWorks(works){
         const worksElement = document.createElement("projet");
         const imageUrlElement = document.createElement("img");
         imageUrlElement.src = projet.imageUrl;
-        const titreh2Element = document.createElement("h2");
-        titreh2Element.innerText = projet.title;
+        const nomElement = document.createElement("p");
+        nomElement.innerText = projet.title;
 
         divGallery.appendChild(worksElement);
         worksElement.appendChild(imageUrlElement);
-        worksElement.appendChild(titreh2Element);
+        worksElement.appendChild(nomElement);
         
     }
 }
