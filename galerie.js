@@ -53,7 +53,7 @@ function genererCategories(categoriesaGenerer){
             
         });
 
-        
+
         //TEST POUR FILTRER LA CATEGORIE OBJETS (ne fonction pas)
         const boutonObjets = document.querySelector(".objets");
 
@@ -61,19 +61,14 @@ function genererCategories(categoriesaGenerer){
             boutton = document.getElementsByClassName("bouttons") [0];
             boutton.appendChild(boutonObjets);
         }; 
+
         console.log(boutonObjets);
 
+        // AJOUT D'UN addEvenlistener
+        boutonObjets.addEventListener("click", function () {
 
-        boutonObjets.addEventListener('click', () => {
-            //const categoriesTries = categories.filter(function (works) {
-               // return works.categoryId = 1;
-           // });
-            //console.log(boutonObjets)
-       });
-
-        
-
-
+        })  
+            
     }
 }
 
