@@ -1,13 +1,25 @@
 // Récupération de la galerie d'image depuis GET/WORKS (http://localhost:5678/api/works)
-const reponse = await fetch('http://localhost:5678/api/works');
-console.log(reponse)
-const works = await reponse.json();
 
-genererWorks(works)
+init();
+
+async function init() {
+    // Appel API WORKS
+    const responseWorks = await fetch('http://localhost:5678/api/works');
+    const worksArray = await responseWorks.json();
+
+    // Appel API CATEGORIES
+    const responseCategories = await fetch('http://localhost:5678/api/categories');
+    const categoriesArray = await responseCategories.json();
+
+    genererCategories(worksArray, categoriesArray)
+    genererWorks(worksArray)
+}
+
 function genererWorks(worksaGenerer){
+    document.querySelector(".gallery").innerHTML = ""; //  remise a zero
     for (let i = 0; i < worksaGenerer.length; i++) {
 
-        const projet = works[i];
+        const projet = worksaGenerer[i];
         const divGallery = document.querySelector(".gallery");
         const worksElement = document.createElement("projet");
         const imageUrlElement = document.createElement("img");
@@ -21,17 +33,11 @@ function genererWorks(worksaGenerer){
     }
 }
 
-// Afficher  les filtres par catégories
-
-const responseCategories = await fetch('http://localhost:5678/api/categories');
-console.log(responseCategories)
-const categories = await responseCategories.json();
-console.log(categories)
-genererCategories(categories)
-function genererCategories(categoriesaGenerer){
+function genererCategories(works, categoriesaGenerer){
+    categoriesaGenerer.push({name: 'Tous', id: '0'});
     for (let i = 0; i < categoriesaGenerer.length; i++) {
-        
-        const filtrer = categories[i];
+
+        const filtrer = categoriesaGenerer[i];
         const nomCategorie = filtrer.name;
         const idCategorie = filtrer.id;
 
@@ -42,42 +48,17 @@ function genererCategories(categoriesaGenerer){
         boutonFiltre.textContent = nomCategorie;
 
         divGallery.appendChild(boutonFiltre);
-        console.log(boutonFiltre)
 
         boutonFiltre.addEventListener("click", function() {
-            const worksOrdonnes = Array.from(categories);
-            
-            
-            //console.log(boutonFiltre)
-            console.log(worksOrdonnes)
-            
+            console.log(idCategorie);
+            if (boutonFiltre.id == 0) { //  BOUTON TOUS
+                genererWorks(works);
+            } else { // AUTRES BOUTONS
+                const worksFiltres = works.filter(function (work) { // Pour chaque projet, je vérifie sa catégorie
+                    return work.categoryId == boutonFiltre.id;
+                });
+                genererWorks(worksFiltres);
+            }
         });
-
-
-        //TEST POUR FILTRER LA CATEGORIE OBJETS (ne fonction pas)
-        const boutonObjets = document.querySelector(".objets");
-
-        function objetParent(boutonObjets) {
-            boutton = document.getElementsByClassName("bouttons") [0];
-            boutton.appendChild(boutonObjets);
-        }; 
-
-        console.log(boutonObjets);
-
-        // AJOUT D'UN addEvenlistener
-        boutonObjets.addEventListener("click", function () {
-
-        })  
-            
     }
 }
-
-/*async function categoriesObjets(){
-    const categories = await filtrerObjets()
-    console.log(categories, objets) 
-    
-    for (const objet of objets){
-        const divGallery = document.querySelector(".gallery");
-        const boutonFiltre = creerBouton(categories.name, categories.id);
-    }
-}*/
