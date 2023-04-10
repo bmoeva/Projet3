@@ -52,6 +52,7 @@ function genererCategories(works, categoriesaGenerer){
         boutonFiltre.addEventListener("click", function() {
             console.log(idCategorie);
             if (boutonFiltre.id == 0) { //  BOUTON TOUS
+                //guests.unslift
                 genererWorks(works);
             } else { // AUTRES BOUTONS
                 const worksFiltres = works.filter(function (work) { // Pour chaque projet, je vérifie sa catégorie

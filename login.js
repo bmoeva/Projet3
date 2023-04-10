@@ -1,38 +1,44 @@
-const formEl = document.getElementById('loginform'); console.log(formEl);
+const user = document.getElementById('login');
 
-formEl.addEventListener('submit', event => {
+user.addEventListener('submit', event => {
   event.preventDefault();
 
   const token = localStorage.getItem("token");
   console.log('token:', token);
 
-  const user = {
+  const idConnexion = {
     email: event.target.querySelector("email").value,
     password: event.target.querySelector("password").value,
-  };
-})
+  }
+});
 
 // Création  de la charge utile au format JSON
-const chargeUtile = JSON.stringify(user);
+//const chargeUtile = JSON.stringify(user);
 
 // Appel de la fonction fecth 
-const responseLogin = await fetch('http://localhost:5678/api/users/login', {
+const response = await fetch('http://localhost:5678/api/users/login', {
   method: 'POST',
   headers: {
-    "content-type": "application/json"
+    'Content-Type': 'application/json'
 },
-  body: chargeUtile
-})
-  .then(response => {
+  body: JSON.stringify(user)
+  //body: chargeUtile
+});
+
+let reuslt = await response.json();
+alert(reuslt.message); console.log(reuslt);
+
+// Rédirection ver la page d'acceuil
+  /*.then(response => {
     if (response.ok) {
-      document.location.href = "http://127.0.0.1:5501/Portfolio-architecte-sophie-bluel-master/FrontEnd/index.html";
+      window.location.href = "http://127.0.0.1:550//Portfolio-architecte-sophie-bluel-master/FrontEnd/index.html";
     }
+
+    // Prévenir l'utilaseur avec un message d'erreur 
     else {
       const erreur = document.createElement('p');
-      erreur.textContent = 'erreur d authentification';
+      loginError.textContent = 'erreur d'\ authentification';
       erreur.className = "red";
       Form.appendChild(erreur);
     }
-  })
-//const loginPage = await responseLogin.json();
-//console.log(responseLogin);
+  })*/
