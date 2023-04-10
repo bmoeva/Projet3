@@ -1,9 +1,9 @@
-const user = document.getElementById('login');
+const user = document.getElementById('#login');
 
 user.addEventListener('submit', event => {
   event.preventDefault();
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token"); // Stockage du token d'authentification
   console.log('token:', token);
 
   const idConnexion = {
