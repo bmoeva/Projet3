@@ -7,40 +7,61 @@ const loginForm = document.getElementById('login');
 loginForm.addEventListener('submit', event => {
   event.preventDefault();
   event.stopImmediatePropagation();
-console.log(event);
-  
+  console.log(event);
 
-  //const token = localStorage.getItem("token"); // Stockage du token d'authentification
-  //console.log('token:', token);
-
-  const idConnexion = {
+const idConnexion = {
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
-    
   };
-// Appel de la fonction fecth 
-const responseLogin = fetch('http://localhost:5678/api/users/login', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',  
+  console.log(idConnexion);
+
+// Appel de la fonction fetch 
+fetch('http://localhost:5678/api/users/login', {
+
+method: 'POST',
+headers: {
+  'Content-Type': 'application/json',
 },
   body: JSON.stringify(idConnexion)
 })
+.then((response) => {
+  if(response.status == 200) {
+    return response.json() }
+  })
+
+}) 
+
+}
 
 
-/*then(response => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.then((responseData) => {
+  data = responseData;
+  console.log(data);
   if (response.ok) {
-    alert("Bienvenu Sophie Bluel");
-    console.log(response);
-}})*/
-})
-
-
+    alert('Vous êtes connectées !');
+    console.log(idConnexion);
+  }
+});*/
 
 // Création  de la charge utile au format JSON
 //const chargeUtile = JSON.stringify(user);
 
-
+//const token = localStorage.getItem("token"); // Stockage du token d'authentification
+  //console.log('token:', token);
 
 //let reuslt = response.json();
 //alert(reuslt.message); console.log(reuslt);
@@ -59,4 +80,3 @@ const responseLogin = fetch('http://localhost:5678/api/users/login', {
       Form.appendChild(erreur);
     }
   })*/
-}

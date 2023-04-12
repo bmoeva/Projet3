@@ -4,7 +4,7 @@ init();
 
 async function init() {
     // Appel API WORKS
-    const responseWorks = await fetch('http://localhost:5678/api/works');
+    const responseWorks = await fetch('http://localhost:5678/api/works'); console.log(responseWorks);
     const worksArray = await responseWorks.json();
 
     // Appel API CATEGORIES
