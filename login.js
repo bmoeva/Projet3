@@ -24,10 +24,12 @@ headers: {
 },
   body: JSON.stringify(idConnexion)
 })
-.then((response) => {
+/*.then((response) => {
   if(response.status == 200) {
     return response.json() }
-  })
+  })*/
+  .then(response => response.json())
+  .then(body => console.log(body))
 
 }) 
 
