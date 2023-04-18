@@ -3,8 +3,8 @@ init();
 async function init() {
 
 const loginForm = document.getElementById('login');
-
 loginForm.addEventListener('submit', event => {
+ 
   event.preventDefault();
   event.stopImmediatePropagation();
   console.log(event);
@@ -22,20 +22,45 @@ method: 'POST',
 headers: {
   'Content-Type': 'application/json',
 },
-  body: JSON.stringify(idConnexion)
+
+body: JSON.stringify(idConnexion),
+
 })
-/*.then((response) => {
-  if(response.status == 200) {
-    return response.json() }
-  })*/
   .then(response => response.json())
-  .then(body => console.log(body))
+  .then((data) => {  
+    localStorage.setItem("token", data.token),
+    window.location.href = "index.html";
+    console.log(data);
 
-}) 
+    if(response.ok) {
+      console.log("Connexion réussie !");
+      return response.json();
+    }
+    else{
+      console.error("Impossible de ce connecter !");
+    }
+  }) 
 
+  .catch((error) => {
+    console.log(error);
+});
+
+
+  //
+  //if(response.ok === true) {
+    //alert("Vous êtes connectés !")
+  //}
+
+  //else {
+    //throw new Error('Il y a une erreur !')
+  //}; console.log(response.ok);
+}); 
 }
 
 
+//else {
+  //error.innerHTML =""
+//}
 
 
 

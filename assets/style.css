@@ -171,8 +171,27 @@ li:hover {
 	flex-direction: row;
 	justify-content: center;
 	gap: 10px;
-	border: 1px solid #1D6154;
-	
+}
+
+#login {
+	display: flex;
+	flex-direction: column;
+}
+
+input[type="email"], [type="password"]{
+	width: 375px;
+	height: 51px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.connexion-button {
+	display: flex;
+	flex-direction: column;
+	background-color: #1D6154;
+	border-radius: 60px;
+	color: #FFFFFF;
+	font-size: 14px;
+	width: 107px;
 }
 
 .gallery img {
