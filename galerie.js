@@ -13,6 +13,24 @@ async function init() {
 
     genererCategories(worksArray, categoriesArray)
     genererWorks(worksArray)
+    initOpenModalButton()
+}
+
+function initOpenModalButton() {
+    let modal = document.getElementById("modal");
+    let editProjectButton = document.getElementById("edit-projet");
+    if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== "") {
+        editProjectButton.style.display = "block";
+    } else {
+        editProjectButton.style.display = "none";
+    }
+    editProjectButton.addEventListener("click", function() {
+        modal.style.display = "block";
+    });
+    let modalClose = document.getElementById("modalClose");
+    modalClose.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
 }
 
 function genererWorks(worksaGenerer){
@@ -36,6 +54,7 @@ function genererWorks(worksaGenerer){
 function genererCategories(works, categoriesaGenerer){
     categoriesaGenerer.push({name: 'Tous', id: '0'});
     for (let i = 0; i < categoriesaGenerer.length; i++) {
+        categoriesaGenerer = categoriesaGenerer.sort(compare)
 
         const filtrer = categoriesaGenerer[i];
         const nomCategorie = filtrer.name;
@@ -62,4 +81,11 @@ function genererCategories(works, categoriesaGenerer){
             }
         });
     }
+}
+
+function compare( a, b ) {
+    if ( a.id < b.id ){
+        return -1;
+    }
+    return 1;
 }
