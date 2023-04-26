@@ -126,26 +126,29 @@ function compare( a, b ) {
             worksModalElement.appendChild(legendElement);
             worksModalElement.appendChild(deleteElement);
             deleteElement.appendChild(icon);
+            deleteElement.addEventListener("click", function()
+             {
+                deleteProjects(projectsModal.id)
+             })
 
-            const workId = projectsModal.id;
-
-            /********* SUPPRESSION DE PROJET **********/
-    function deleteProjects() {
-        fetch(`http://localhost:5678/api/works/${workId}`, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-            "authorization": `Bearer ${token}`
-    }
-     });
-        if(response.ok) {
-            console.log(`Travail${workId}supprimer avec succes !`);
-    }
-        else {
-            console.error(`Impossible de supprimer ${workId} !`);
-     }
-    }
         
     }  
 }
 
+/********* SUPPRESSION DE PROJET **********/
+function deleteProjects(workId) {
+    const token = localStorage.getItem("token")
+    fetch(`http://localhost:5678/api/works/${workId}`, {
+    method: "DELETE",
+    headers: {
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${token}`
+}
+ });
+    if(response.ok) {
+        console.log(`Travail${workId}supprimer avec succes !`);
+}
+    else {
+        console.error(`Impossible de supprimer ${workId} !`);
+ }
+}
