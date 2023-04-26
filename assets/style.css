@@ -201,13 +201,10 @@ input[type="email"], [type="password"]{
 
 }
 
-#gallery-photo {/*Galerie de la modale*/
-	width: 80%;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
-	margin: auto;
+#gallery-photo img{/*Galerie de la modale*/
+	 
+	width: 100%;
+	
 }
 
 .modal {
