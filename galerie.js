@@ -19,7 +19,6 @@ async function init() {
     genererWorks(worksArray)
     initOpenModalButton()
     genererProjectsModale(modalProjects)
-    deleteProjects()
 }
 
 //*********FUNCTION POUR L'OUVERTURE DE LA MODALE **********/
@@ -106,6 +105,7 @@ function compare( a, b ) {
 
 /******** APPEL A LA FUNCTION POUR AFFICHER WORKS DANS LA MODALE *********/
     function genererProjectsModale(modalProjects) {
+        document.getElementById("gallery-photo").innerHTML = ""; //  remise a zero
         for (let i = 0; i < modalProjects.length; i++) {
             const projectsModal = modalProjects[i];
             const divgalleryphoto = document.getElementById("gallery-photo");
@@ -136,7 +136,7 @@ function compare( a, b ) {
 }
 
 /********* SUPPRESSION DE PROJET **********/
-function deleteProjects(workId) {
+function deleteProjects(workId, worksModale) {
     const token = localStorage.getItem("token")
     fetch(`http://localhost:5678/api/works/${workId}`, {
     method: "DELETE",
@@ -144,11 +144,17 @@ function deleteProjects(workId) {
         "Content-Type": "application/json",
         "authorization": `Bearer ${token}`
 }
- });
-    if(response.ok) {
-        console.log(`Travail${workId}supprimer avec succes !`);
-}
-    else {
-        console.error(`Impossible de supprimer ${workId} !`);
- }
+ })
+ .then(response => {
+        if(response.ok) {
+            console.log(`Travail${workId}supprimer avec succes !`);
+            console.log(worksModale);
+            const worksModaleAfterDelete = worksModale.filter(work => work.id !== workId);
+            console.log(worksModaleAfterDelete);
+            genererProjectsModale(worksModaleAfterDelete);
+        }
+        else {
+            console.error(`Impossible de supprimer ${workId} !`);
+        }
+    });
 }
