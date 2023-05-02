@@ -215,7 +215,7 @@ input[type="email"], [type="password"]{
 	height: 105px;
 }
 
-.modal {
+.modal, .modal-2 {
 	display: flex; /* Hidden by default */
 	align-items: center;
 	justify-content: center;

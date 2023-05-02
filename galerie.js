@@ -27,7 +27,6 @@ function initOpenModalButton() {
 
     let modal = document.getElementById("modal1");
     let editProjectButton = document.getElementById("edit-projet");
-    console.log(editProjectButton);
 
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== "") {
         editProjectButton.style.display = "block";
@@ -39,7 +38,8 @@ function initOpenModalButton() {
 
         const buttonFilter = document.getElementById("filtres")
         buttonFilter.style.display = "none";
-    } else {
+    } 
+    else {
         editProjectButton.style.display = "none";
     }
     editProjectButton.addEventListener("click", function() {
@@ -146,18 +146,16 @@ function compare( a, b ) {
 
     let openModal2 = document.getElementById("modal2");
     let buttonaddPhoto = document.getElementById("modal-btn-add"); 
-    console.log(buttonaddPhoto);
+
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){
         buttonaddPhoto.style.display = "block";
 
         buttonaddPhoto.addEventListener("click", function() {
         openModal2.style.display = "block";
     });
-
-     modal.style.display = "none";
+        modal.style.display = "none";
     }
     
-
     else {
         buttonaddPhoto.style.display = "none";
     }
