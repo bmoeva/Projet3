@@ -147,29 +147,33 @@ function compare( a, b ) {
     let openModal2 = document.getElementById("modal2");
     let buttonaddPhoto = document.getElementById("modal-btn-add"); 
     console.log(buttonaddPhoto);
-    if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== "")
-    buttonaddPhoto.style.display = "block";
+    if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){
+        buttonaddPhoto.style.display = "block";
+
+        buttonaddPhoto.addEventListener("click", function() {
+        openModal2.style.display = "block";
+    });
+
+     modal.style.display = "none";
+    }
+    
 
     else {
         buttonaddPhoto.style.display = "none";
     }
-        buttonaddPhoto.addEventListener("click", function() {
-            openModal2.style.display = "block";
-    });
-
+        
     buttonaddPhoto .addEventListener("clik", event => {
         event.preventDefault();
     })
 
     const form = document.getElementById("form-post");
-    const image = document.getElementById("file-image");
-    const title = document.getElementById("title");
-    const category = document.getElementById("category");
+    const image = document.getElementById("file-image").value;
+    const title = document.getElementById("title").value;
+    const category = document.getElementById("category").value;
+
 
     form.addEventListener ('submit', (event) => {
         event.preventDefault();
-
-        
     })
 }
 
