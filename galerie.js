@@ -19,16 +19,23 @@ async function init() {
     genererWorks(worksArray)
     initOpenModalButton()
     genererProjectsModale(modalProjects)
+    initbtnaddWork() 
 }
 
 //*********FUNCTION POUR L'OUVERTURE DE LA MODALE **********/
 function initOpenModalButton() {
+
     let modal = document.getElementById("modal1");
     let editProjectButton = document.getElementById("edit-projet");
+    console.log(editProjectButton);
+
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== "") {
         editProjectButton.style.display = "block";
         const blackLine = document.getElementById("nav-edit-publish-mode");
         blackLine.style.display=null;
+
+        const editPhotoProfil = document.getElementById("edit-photo");
+        editPhotoProfil.style.display=null;
 
         const buttonFilter = document.getElementById("filtres")
         buttonFilter.style.display = "none";
@@ -130,10 +137,42 @@ function compare( a, b ) {
              {
                 deleteProjects(projectsModal.id)
              })
-
-        
     }  
 }
+
+//*********FUNCTION POUR L'OUVERTURE DE LA DEUXIEME MODALE **********/
+
+ function initbtnaddWork() {
+
+    let openModal2 = document.getElementById("modal2");
+    let buttonaddPhoto = document.getElementById("modal-btn-add"); 
+    console.log(buttonaddPhoto);
+    if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== "")
+    buttonaddPhoto.style.display = "block";
+
+    else {
+        buttonaddPhoto.style.display = "none";
+    }
+        buttonaddPhoto.addEventListener("click", function() {
+            openModal2.style.display = "block";
+    });
+
+    buttonaddPhoto .addEventListener("clik", event => {
+        event.preventDefault();
+    })
+
+    const form = document.getElementById("form-post");
+    const image = document.getElementById("file-image");
+    const title = document.getElementById("title");
+    const category = document.getElementById("category");
+
+    form.addEventListener ('submit', (event) => {
+        event.preventDefault();
+
+        
+    })
+}
+
 
 /********* SUPPRESSION DE PROJET **********/
 function deleteProjects(workId, worksModale) {
