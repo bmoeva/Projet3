@@ -164,7 +164,7 @@ function compare( a, b ) {
         event.preventDefault();
     })
 
-    const form = document.getElementById("form-post");
+    const form = document.getElementById("read-file");
     const image = document.getElementById("file-image").value;
     const title = document.getElementById("title").value;
     const category = document.getElementById("category").value;
