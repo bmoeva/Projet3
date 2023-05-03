@@ -116,17 +116,21 @@ function compare( a, b ) {
         for (let i = 0; i < modalProjects.length; i++) {
             const projectsModal = modalProjects[i];
             const divgalleryphoto = document.getElementById("gallery-photo");
-            const worksModalElement = document.createElement("projets");
-            const pictureUrlElement = document.createElement("img");
-            pictureUrlElement.src = projectsModal.imageUrl;
-            const legendElement = document.createElement("p");
-            legendElement.innerText = "éditer";
-            const deleteElement = document.createElement("button");
-            deleteElement.classList.add("buttonBin");
 
+            const worksModalElement = document.createElement("projets");
 
             const icon = document.createElement("i");
             icon.classList.add("fa-solid", "fa-trash-can");
+
+            const pictureUrlElement = document.createElement("img");
+            pictureUrlElement.src = projectsModal.imageUrl;
+
+            const legendElement = document.createElement("p");
+            legendElement.innerText = "éditer";
+
+            const deleteElement = document.createElement("button");
+            deleteElement.classList.add("buttonBin");
+
 
             divgalleryphoto.appendChild(worksModalElement);
             worksModalElement.appendChild(pictureUrlElement);
@@ -152,29 +156,56 @@ function compare( a, b ) {
 
         buttonaddPhoto.addEventListener("click", function() {
         openModal2.style.display = "block";
+
+        const fileImage = document.getElementById("file-image");
+        fileImage.style.display = "none";
     });
-        modal.style.display = "none";
-    }
-    
-    else {
-        buttonaddPhoto.style.display = "none";
-    }
         
+        
+    }
+    else {
+        //buttonaddPhoto.style.display = "none";
+    }
+
     buttonaddPhoto .addEventListener("clik", event => {
         event.preventDefault();
     })
 
     const form = document.getElementById("read-file");
-    const image = document.getElementById("file-image").value;
-    const title = document.getElementById("title").value;
-    const category = document.getElementById("category").value;
+    const image = document.getElementById("file-image");
+    const title = document.getElementById("title");
+    const category = document.getElementById("category");
 
 
     form.addEventListener ('submit', (event) => {
         event.preventDefault();
-    })
-}
 
+    // Ajout de l'objet FormData pour l'envoi du formulaire
+        const formData = new FormData();
+        formData.append('title', title.value);
+        formData.append('image', image.value);
+        formData.append('category', category.value);
+
+        console.log(formData);
+
+    // Envoi de la requête pour l'ajout de la photo dans la liste de projets
+        fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                "accept": "application/json",
+                Authorization: 'Bearer' + localStorage.getItem("token"),
+                "Content-Type": "multipart/form-data"
+            },
+            body:formData
+        })
+        .then(postWorks => postWorks.json())
+        .then(data => {
+            console.log(data);
+    // Réinitialisation du formulaire et de la prévisualisation de l'image
+        })
+        .catch(error => console.error('Erreur lors de l\'ajout du projet :', error));
+    });
+}
 
 /********* SUPPRESSION DE PROJET **********/
 function deleteProjects(workId, worksModale) {

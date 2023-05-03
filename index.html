@@ -74,8 +74,7 @@
 				</span>
 				<h2 id="modal-title">Galerie photo</h2>
 				<div id="gallery-photo">
-					<i class="fa-solid fa-trash-can icone-modale-delete"></i>
-					<i class="fa-solid fa-arrows-up-down-left-right move-icone"></i>
+					<i class="fa-solid fa-trash-can"></i>
 				</div>
 				<hr class="line">
 				<div class="modal-button">
@@ -95,25 +94,26 @@
 						<i class="fa-solid fa-xmark icone"></i>
 					</span>
 			<form action="#" id="form-post">
-				<label for="title">Ajout photo</label>
-				<div>
-					<i class="fa-sharp fa-regular fa-image" id="icon-img"></i>
+				<label for="title" id="title-add-photo">Ajout photo</label>
+				<div class="icone-image-contenu">
+					<i class="fa-sharp fa-regular fa-image"></i>
 					<input class="shoose-file" type="file" id="file-image" name="image">
 					<div class="add-photo-form" id="read-file">
 						<label for="file">+ Ajouter photo</label>
 					</div>
-					<p>jng, png: 4mo max</p>
+					<p class="info-image">jng, png: 4mo max</p>
 				</div>
 				<div class="form-2">
-					<label for="title">Titre</label>
+					<label for="title" class="title-text">Titre</label>
 					<input class="form-cadre" type="text" id="title">
-					<label for="category">Catégorie</label>
+					<label for="category" class="category-text">Catégorie</label>
 					<select class="form-cadre" id="category" name="category">
 						<option value="objets">Objets</option>
 						<option value="appartements">Appartements</option>
 						<option value="Hotels et restaurants">Hôtels et restaurants</option>
 					</select>
-					<input class="btn-valid" type="submit" value="valider">
+					<hr id="line2">
+					<input id="btn-valid" type="submit" value="valider">
 				</div>
 			</form>
 			</div>

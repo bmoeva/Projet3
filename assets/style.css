@@ -240,22 +240,34 @@ input[type="email"], [type="password"]{
 	height: 731px;
 	border-bottom:1px solid #B3B3B3;
   }
-  #icon-img {
-	height: 169px;
-	width: 420px;
-	border-radius: 3px;
-	background: #E8F1F7;
-	border-radius: 3px;
-  }
   .add-photo-form {
 	width: 173px;
 	height: 36px;
 	background: #CBD6DC;
 	border-radius: 50px;
   }
+  #title-add-photo {
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 30px;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 36px;
+  }
   .form-2 {
 	display: flex;
 	flex-direction: column;
+	margin-top: 30px;
+  }
+  .title-text, .category-text {
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	color: #3D3D3D;
   }
   .form-cadre {
 	background: #FFFFFF;
@@ -263,6 +275,73 @@ input[type="email"], [type="password"]{
 	border: none;
 	width: 420px;
 	height: 51px;
+  }
+  #title {
+	margin-top: 10px;
+	margin-bottom: 21px;
+  }
+  #category {
+	margin-top: 10px;
+  }
+  #line2 {
+	width: 420px;
+	height: 0px;
+	border: 1px solid #B3B3B3;
+	margin-top: 220px;
+	justify-content: center;
+	display: flex;
+	margin: 220px 0px 0px 0px;
+  }
+  #btn-valid {
+	background: #A7A7A7;
+	border-radius: 60px;
+	border: none;
+	width: 237px;
+	height: 36px;
+	margin-top: 79px;
+  }
+  .icone-image-contenu {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	height: 169px;
+	width: 420px;
+	border-radius: 3px;
+	background: #E8F1F7;
+	border-radius: 3px;
+  }
+  .fa-image {
+	width: 58px;
+	height: 46px;
+	font-size: 58px;
+	color: #B9C5CC;
+	margin-bottom: 21px;
+  }
+  .info-image {
+	margin-top: 7px;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+	color: #444444;
+  }
+  .close-modal {
+	size: 12.1px;
+	margin-left: 95%;
+  }
+  #form-post {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  .add-photo-form {
+	justify-content: center;
+	display: flex;
+	align-items: center;
   }
   .modal-button {
 	display: flex;
@@ -294,8 +373,8 @@ input[type="email"], [type="password"]{
 	font-weight: 400;
 	margin-top: 32px;
   }
-  .icone-modale-delete i{
-	color: #D65353;
+  .fa-trash-can {
+	
   }
   hr{
 	display: flex;
@@ -357,11 +436,11 @@ input[type="email"], [type="password"]{
 }
 
 #edit-projet {
-	
 	width: 84px;
 	height: 18px;
-	left: 846px;
-	top: 700px;
+	margin-left: 31px;
+	align-items: center;
+	margin-top: 10px;
 }
 
 #contact {
