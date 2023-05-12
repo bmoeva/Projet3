@@ -129,7 +129,7 @@ function compare( a, b ) {
             icon.classList.add("fa-solid", "fa-trash-can");
 
             const pictureUrlElement = document.createElement("img");
-            pictureUrlElement.src = projectsModal.imageUrl;
+            pictureUrlElement.src = projectsModal.imageUrl; console.log(projectsModal);
 
             const legendElement = document.createElement("p");
             legendElement.innerText = "éditer";
@@ -145,7 +145,7 @@ function compare( a, b ) {
             deleteElement.appendChild(icon);
             deleteElement.addEventListener("click", function()
              {
-                deleteProjects(projectsModal.wo)
+                deleteProjects(projectsModal.id, projectsModal);
              })
     }  
 }
@@ -159,6 +159,7 @@ function compare( a, b ) {
 
     let previousButton = document.getElementById("back-modal");
     let modal2Close = document.getElementById("modal-close");
+    let closeModale1 = document.getElementById("")
 
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){
         buttonaddPhoto.style.display = "block";
@@ -169,7 +170,7 @@ function compare( a, b ) {
         const fileImage = document.getElementById("file-image");
         fileImage.style.display = "none";
     });
-    
+
     previousButton.addEventListener("clik", function() {
         modal2.style.display = "none";
     });
