@@ -28,6 +28,7 @@
 			<li>projets</li>
 			<li>contact</li>
 			<li><a href="login.html"> login </a> </li>
+			<li style="display: none;">logout</li>
 			<li><img src="./assets/icons/instagram.png" id="instagram" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -90,7 +91,7 @@
 					<span id="back-modal" class="back">
 						<i class="fa-solid fa-arrow-left"></i>
 					</span>
-					<span id="modla-close" class="close-modal">
+					<span id="modal-close" class="close-modal">
 						<i class="fa-solid fa-xmark icone"></i>
 					</span>
 			<form action="#" id="form-post">
@@ -98,8 +99,8 @@
 				<div class="icone-image-contenu">
 					<i class="fa-sharp fa-regular fa-image"></i>
 					<input class="shoose-file" type="file" id="file-image" name="image">
-					<div class="add-photo-form" id="read-file">
-						<label for="file">+ Ajouter photo</label>
+					<div class="add-photo-form" id="read-file"> 
+						<label for="file-image">+ Ajouter photo</label> 
 					</div>
 					<p class="info-image">jng, png: 4mo max</p>
 				</div>
@@ -108,9 +109,9 @@
 					<input class="form-cadre" type="text" id="title">
 					<label for="category" class="category-text">Catégorie</label>
 					<select class="form-cadre" id="category" name="category">
-						<option value="objets">Objets</option>
-						<option value="appartements">Appartements</option>
-						<option value="Hotels et restaurants">Hôtels et restaurants</option>
+						<option value="0">Objets</option>
+						<option value="1">Appartements</option>
+						<option value="2">Hôtels et restaurants</option>
 					</select>
 					<hr id="line2">
 					<input id="btn-valid" type="submit" value="valider">
@@ -139,7 +140,7 @@
 	</section>
 </main>
 
-<footer>
+<footer id="footer-index">
 	<nav>
 		<ul>
 			<li>Mentions Légales</li>

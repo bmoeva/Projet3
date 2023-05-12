@@ -82,6 +82,12 @@ function genererCategories(works, categoriesaGenerer){
 
         const divGallery = document.getElementById("filtres");
         const boutonFiltre = document.createElement("button");
+        boutonFiltre.className = "stylebouton";
+        console.log(boutonFiltre.outerHTML);
+
+        //const div = document.createElement("div");
+        //div.className = "stylecss";
+        //console.log(div.outerHTML);
 
         boutonFiltre.setAttribute("id", idCategorie)
         boutonFiltre.textContent = nomCategorie;
@@ -139,7 +145,7 @@ function compare( a, b ) {
             deleteElement.appendChild(icon);
             deleteElement.addEventListener("click", function()
              {
-                deleteProjects(projectsModal.id)
+                deleteProjects(projectsModal.wo)
              })
     }  
 }
@@ -151,6 +157,9 @@ function compare( a, b ) {
     let openModal2 = document.getElementById("modal2");
     let buttonaddPhoto = document.getElementById("modal-btn-add"); 
 
+    let previousButton = document.getElementById("back-modal");
+    let modal2Close = document.getElementById("modal-close");
+
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){
         buttonaddPhoto.style.display = "block";
 
@@ -160,18 +169,28 @@ function compare( a, b ) {
         const fileImage = document.getElementById("file-image");
         fileImage.style.display = "none";
     });
+    
+    previousButton.addEventListener("clik", function() {
+        modal2.style.display = "none";
+    });
         
         
     }
     else {
         //buttonaddPhoto.style.display = "none";
     }
+    
+    
+
+    modal2Close.addEventListener("click", function() {
+        modal2.style.display = "none";
+    })
 
     buttonaddPhoto .addEventListener("clik", event => {
         event.preventDefault();
     })
 
-    const form = document.getElementById("read-file");
+    const form = document.getElementById("form-post");
     const image = document.getElementById("file-image");
     const title = document.getElementById("title");
     const category = document.getElementById("category");
@@ -183,17 +202,21 @@ function compare( a, b ) {
     // Ajout de l'objet FormData pour l'envoi du formulaire
         const formData = new FormData();
         formData.append('title', title.value);
-        formData.append('image', image.value);
+        formData.append('image', image.value[0]);
+        console.log(image.files[0]);
         formData.append('category', category.value);
 
-        console.log(formData);
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ' : ' + pair[1]);
+        }
+        
 
     // Envoi de la requête pour l'ajout de la photo dans la liste de projets
         fetch("http://localhost:5678/api/works", {
             method: "POST",
             headers: {
                 "accept": "application/json",
-                Authorization: 'Bearer' + localStorage.getItem("token"),
+                "authorization": 'Bearer ' + localStorage.getItem("token"),
                 "Content-Type": "multipart/form-data"
             },
             body:formData

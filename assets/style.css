@@ -105,12 +105,17 @@ nav a {
 	border: none;
 	color: black;
 }
-
-nav li:active
-nav li:focus {
+nav li:focus,
+nav li:active {
 	font-weight: 600;
 	color: black;
 }
+
+/*nav li:active
+nav li:focus {
+	font-weight: 600;
+	color: black;
+}*/
 
 nav li {
 	padding: 0 25px;
@@ -166,6 +171,19 @@ li:hover {
 
 /*Code ajouter */
 
+.stylebouton {
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	background-color: #fefefe;
+	color:#1D6154;
+}
+
+.stylebouton:active,
+.stylebouton:focus {
+	background-color: #1D6154;
+	color: #fefefe;
+}
+
 #filtres {
 	text-align: center;
 	margin-bottom: 2%;
@@ -178,22 +196,39 @@ li:hover {
 #login {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 input[type="email"], [type="password"]{
 	width: 375px;
 	height: 51px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
 }
-
-.connexion-button {
-	display: flex;
-	flex-direction: column;
+.id-pass-email {
+	margin-bottom: 7px;
+	color: #3D3D3D;
+	margin: 37px 160px 7px -130px;
+	width: 92px;
+}
+button[type="submit"] {
 	background-color: #1D6154;
 	border-radius: 60px;
 	color: #FFFFFF;
 	font-size: 14px;
-	width: 107px;
+	margin-top: 37px;
+	margin-bottom: 28px;
+	text-align: center;
+	border: none;
+	width: 178px;
+	line-height: 36px;
+}
+.mot-passe {
+	color: #3D3D3D;
+	text-decoration: underline;
+	font-weight: 500;
+	height: 16px;
+	font-size: 14px;
 }
 
 .gallery img {
@@ -343,6 +378,16 @@ input[type="email"], [type="password"]{
 	display: flex;
 	align-items: center;
   }
+  #modal-title {
+	font-weight: 400;
+	font-size: 26px;
+	text-align: center;
+	line-height: 30px;
+	margin-top: 60px;
+	margin-bottom: 46px;
+	color: #000000;
+	font-family: 'Work Sans';
+  }
   .modal-button {
 	display: flex;
 	flex-direction: column;
@@ -373,10 +418,16 @@ input[type="email"], [type="password"]{
 	font-weight: 400;
 	margin-top: 32px;
   }
-  .fa-trash-can {
-	
+  #gallery-photo i {
+	position: absolute;
+	right: 0%;
+	top: 0%;
   }
-  hr{
+  #gallery-photo {
+	margin-left: 104px;
+  }
+  
+  hr {
 	display: flex;
 	width: 420px;
 	height: 0px;
@@ -485,13 +536,29 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
-
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em;
+	font-size: 14px;
+}
+#footer-index {
 	background-color: #FFFFFF;
 	height: 60px;
 	font-size: 14px;
+	width: 100%;
+	left: 0%;
+	right: 0%;
+	position: absolute;
+}
+#footer-login {
+	background-color: #FFFFFF;
+	height: 60px;
+	font-size: 14px;
+	width: 100%;
+	left: 0%;
+	right: 0%;
+	bottom: 0%;
+	position: absolute;
 }
 
