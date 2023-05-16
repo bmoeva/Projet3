@@ -145,51 +145,66 @@ function compare( a, b ) {
             deleteElement.appendChild(icon);
             deleteElement.addEventListener("click", function()
              {
-                deleteProjects(projectsModal.id, projectsModal);
+                deleteProjects(projectsModal.id, modalProjects);
              })
     }  
 }
 
 //*********FUNCTION POUR L'OUVERTURE DE LA DEUXIEME MODALE **********/
 
+
  function initbtnaddWork() {
 
     let openModal2 = document.getElementById("modal2");
     let buttonaddPhoto = document.getElementById("modal-btn-add"); 
-
-    let previousButton = document.getElementById("back-modal");
+    const fileImage = document.getElementById("file-image");
+    let backButton = document.getElementById("back-modal");
     let modal2Close = document.getElementById("modal-close");
-    let closeModale1 = document.getElementById("")
+    let closeModale1 = document.getElementById("modal1");
+    let readFile = document.getElementById("read-file");
+    let infoImage = document.getElementById("info-image");
 
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){
         buttonaddPhoto.style.display = "block";
+        fileImage.style.display = "none";
+        
 
         buttonaddPhoto.addEventListener("click", function() {
         openModal2.style.display = "block";
-
-        const fileImage = document.getElementById("file-image");
-        fileImage.style.display = "none";
+    });
+        backButton.addEventListener("click", function() {
+            modal2.style.display = "none";
+    });  
+    // Fermer la modale 1 à l'ouverture de la modale 2
+        buttonaddPhoto.addEventListener("click", function() {
+            closeModale1.style.display = "none";
+    });
+    // Au click de la fléche gauche je retourne à la deuxième modale
+        backButton.addEventListener("click", function() {
+            closeModale1.style.display = "block";
     });
 
-    previousButton.addEventListener("clik", function() {
-        modal2.style.display = "none";
+        fileImage.addEventListener("click", function() {
+            readFile.style.display = "none";
     });
-        
-        
+
+        fileImage.addEventListener("click", function() {
+            infoImage.style.display = "none";
+    });
+    
     }
     else {
-        //buttonaddPhoto.style.display = "none";
+         
     }
-    
-    
+        modal2Close.addEventListener("click", function() {
+            modal2.style.display = "none";
+    });
 
-    modal2Close.addEventListener("click", function() {
-        modal2.style.display = "none";
-    })
+        buttonaddPhoto .addEventListener("click", event => {
+            event.preventDefault();
+    });
 
-    buttonaddPhoto .addEventListener("clik", event => {
-        event.preventDefault();
-    })
+    
 
     const form = document.getElementById("form-post");
     const image = document.getElementById("file-image");
@@ -254,3 +269,17 @@ function deleteProjects(workId, worksModale) {
         }
     });
 }
+
+const fileimagePreview = document.getElementById("file-image");
+const imagePreview = document.getElementById("image-preview");
+fileimagePreview.onchange = function() {
+    const [file] = fileimagePreview.files
+    if (file) {
+        imagePreview.src = URL.createObjectURL(file);
+    }
+  }
+
+
+    
+    
+  
