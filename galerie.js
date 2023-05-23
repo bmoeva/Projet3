@@ -125,24 +125,29 @@ function compare( a, b ) {
 
             const worksModalElement = document.createElement("projets");
 
-            const icon = document.createElement("i");
-            icon.classList.add("fa-solid", "fa-trash-can");
+            //const icon = document.createElement("i");
+            //icon.classList.add("fa-solid", "fa-trash-can");
+            //icon.style.position = "absolute";
 
             const pictureUrlElement = document.createElement("img");
-            pictureUrlElement.src = projectsModal.imageUrl; console.log(projectsModal);
+            pictureUrlElement.src = projectsModal.imageUrl; 
+            console.log(projectsModal);
 
             const legendElement = document.createElement("p");
             legendElement.innerText = "éditer";
 
             const deleteElement = document.createElement("button");
-            deleteElement.classList.add("buttonBin");
+            deleteElement.classList.add("buttonBin", "fa-solid", "fa-trash-can");
+            deleteElement.setAttribute("class", "fa-solid fa-trash-can iconPoubelle btnPoubelle")
+            deleteElement.id = modalProjects[i].id
+            //deleteElement.style.position = "absolute";
 
 
             divgalleryphoto.appendChild(worksModalElement);
             worksModalElement.appendChild(pictureUrlElement);
             worksModalElement.appendChild(legendElement);
             worksModalElement.appendChild(deleteElement);
-            deleteElement.appendChild(icon);
+            //deleteElement.appendChild(icon);
             deleteElement.addEventListener("click", function()
              {
                 deleteProjects(projectsModal.id, modalProjects);
@@ -182,6 +187,7 @@ function compare( a, b ) {
     // Au click de la fléche gauche je retourne à la deuxième modale
         backButton.addEventListener("click", function() {
             closeModale1.style.display = "block";
+            imagePreview.src = "undifined";
     });
 
         fileImage.addEventListener("click", function() {
@@ -198,6 +204,7 @@ function compare( a, b ) {
     }
         modal2Close.addEventListener("click", function() {
             modal2.style.display = "none";
+            imagePreview.src = "undifined";
     });
 
         buttonaddPhoto .addEventListener("click", event => {
@@ -218,7 +225,7 @@ function compare( a, b ) {
     // Ajout de l'objet FormData pour l'envoi du formulaire
         const formData = new FormData();
         formData.append('title', title.value);
-        formData.append('image', image.value[0]);
+        formData.append('image', image.files[0]);
         console.log(image.files[0]);
         formData.append('category', category.value);
 
@@ -232,8 +239,7 @@ function compare( a, b ) {
             method: "POST",
             headers: {
                 "accept": "application/json",
-                "authorization": 'Bearer ' + localStorage.getItem("token"),
-                "Content-Type": "multipart/form-data"
+                "authorization": 'Bearer ' + localStorage.getItem("token")
             },
             body:formData
         })

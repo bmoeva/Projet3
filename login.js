@@ -28,22 +28,28 @@ body: JSON.stringify(idConnexion),
 })
   .then(response => response.json())
   .then((data) =>  {  
-    alert("Vous êtes connecté !");
+    alert("Connexion réussie !");
     localStorage.setItem("token", data.token),
     window.location.href = "index.html"; //Redirection à la page d'acceuil
     console.log(data);
 
   if(response.ok) {
-      console.log("Connexion réussie !");
+      
       return response.json();
 }
   else{
-    console.error("Impossible de ce connecter !");
+    //alert("Impossible de ce connecter ! Veuillez vérifier vos identifiants !");
 }
 }) 
 
   .catch((error) => {
-   console.log(error);
+   alert('Impossible de ce connecter ! Veuillez vérifier vos identifiants !');
 });
 }); 
 }
+  
+  /*.then((data) =>  {  
+    console.log(data);
+    
+    console.log(data);*/
+

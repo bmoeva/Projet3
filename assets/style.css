@@ -66,6 +66,7 @@ section {
 
 a {
 	text-decoration: none;
+	cursor: pointer;
 }
 
 h1{
@@ -222,6 +223,7 @@ button[type="submit"] {
 	border: none;
 	width: 178px;
 	line-height: 36px;
+	cursor: pointer;
 }
 .mot-passe {
 	color: #3D3D3D;
@@ -238,17 +240,25 @@ button[type="submit"] {
 .gallery-icon-trash {
 	position: relative;
 }
-.icon-trash {
-	color: #E8F1F7;
-	size: 9px;
-}
-.fa-trash-can {
+/*.fa-trash-can {
 	position: absolute;
 	z-index: 2;
-	background-color: #000000;
+	background-color: #080808;
 	border-radius: 2px;
 	width: 17px;
 	height: 17px;
+	cursor: pointer;
+	color: #ffffff;
+	top: 0px;
+}*/
+.iconPoubelle {
+position: absolute;
+top: 0;
+background-color: #000000;
+color: #fefefe;
+}
+.back {
+	cursor: pointer;
 }
 /*
 #gallery-photo { Galerie de la modale
@@ -270,7 +280,6 @@ button[type="submit"] {
 	gap: 20px;
 
 }
-
 #gallery-photo img{
 	width: 100%;
 	height: 100%;
@@ -306,6 +315,7 @@ button[type="submit"] {
 	height: 36px;
 	background: #CBD6DC;
 	border-radius: 50px;
+	cursor: pointer;
   }
   #title-add-photo {
 	font-family: 'Work Sans';
@@ -360,6 +370,10 @@ button[type="submit"] {
 	width: 237px;
 	height: 36px;
 	margin-top: 79px;
+	cursor: pointer;
+  }
+  #btn-valid:hover {
+	background-color: #1D6154;
   }
   #image-preview {
 	width: 129px;
@@ -397,6 +411,7 @@ button[type="submit"] {
   .close-modal {
 	size: 12.1px;
 	margin-left: 95%;
+	cursor: pointer;
   }
   #form-post {
 	display: flex;
@@ -510,6 +525,7 @@ button[type="submit"] {
 	margin-left: 57px;
 	position:absolute;
 	margin-top: 15px;
+	cursor: pointer;
 }
 #my_projects {
 	display: flex;
@@ -522,6 +538,7 @@ button[type="submit"] {
 	margin-left: 31px;
 	align-items: center;
 	margin-top: 10px;
+	cursor: pointer;
 }
 
 #contact {
