@@ -236,6 +236,7 @@ button[type="submit"] {
 .gallery img {
 	width: 100%;
 	height: 100%;
+	position: relative;
 }
 .gallery-icon-trash {
 	position: relative;
@@ -252,10 +253,12 @@ button[type="submit"] {
 	top: 0px;
 }*/
 .iconPoubelle {
-position: absolute;
-top: 0;
+position:relative;
+top: -110px;
 background-color: #000000;
 color: #fefefe;
+z-index: 1;
+right: -65px;
 }
 .back {
 	cursor: pointer;
@@ -271,14 +274,24 @@ color: #fefefe;
 	position: relative;
 }
 */
-#gallery-photo {
+.gallery-photo-wrapper {
+	height:100%;
+	width:181px;
+	border: 1px solid black;
+}
+.gallery-photo {
 	display: flex;
-	flex-direction: row;
-	margin: auto;
-	position: relative;
-	width: 60%;
-	gap: 20px;
-
+	font-size: 0;
+	flex-wrap:wrap;
+	margin:-10px 0 0 -10px;
+}
+projets {
+	display: inline-block;
+	background:blue;
+	margin:10px 0 0 10px;
+	flex-grow: 1;
+	height:100px;
+	width: calc(100% * (1/5) - 10px - 1px)
 }
 #gallery-photo img{
 	width: 100%;

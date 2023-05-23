@@ -34,16 +34,14 @@ body: JSON.stringify(idConnexion),
     console.log(data);
 
   if(response.ok) {
-      
-      return response.json();
+      //return response.json();
 }
   else{
     //alert("Impossible de ce connecter ! Veuillez vérifier vos identifiants !");
 }
 }) 
-
   .catch((error) => {
-   alert('Impossible de ce connecter ! Veuillez vérifier vos identifiants !');
+   error('Impossible de ce connecter ! Veuillez vérifier vos identifiants !');
 });
 }); 
 }
