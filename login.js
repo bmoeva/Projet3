@@ -26,19 +26,20 @@ headers: {
 body: JSON.stringify(idConnexion),
 
 })
-  .then(response => response.json())
+  .then(response => {
+    if (response.ok) {
+      return(response.json());
+    }
+    else {
+      alert("Impossible de ce connecter ! Veuillez vérifier vos identifiants !");
+    }
+  })
   .then((data) =>  {  
-    alert("Connexion réussie !");
     localStorage.setItem("token", data.token),
     window.location.href = "index.html"; //Redirection à la page d'acceuil
     console.log(data);
 
-  if(response.ok) {
-      //return response.json();
-}
-  else{
-    //alert("Impossible de ce connecter ! Veuillez vérifier vos identifiants !");
-}
+  
 }) 
   .catch((error) => {
    error('Impossible de ce connecter ! Veuillez vérifier vos identifiants !');
