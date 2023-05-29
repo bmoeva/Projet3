@@ -156,8 +156,6 @@ function compare( a, b ) {
 }
 
 //*********FUNCTION POUR L'OUVERTURE DE LA DEUXIEME MODALE **********/
-
-
  function initbtnaddWork() {
 
     let openModal2 = document.getElementById("modal2");
@@ -179,6 +177,7 @@ function compare( a, b ) {
     });
         backButton.addEventListener("click", function() {
             modal2.style.display = "none";
+        
     });  
     // Fermer la modale 1 à l'ouverture de la modale 2
         buttonaddPhoto.addEventListener("click", function() {
@@ -187,7 +186,6 @@ function compare( a, b ) {
     // Au click de la fléche gauche je retourne à la deuxième modale
         backButton.addEventListener("click", function() {
             closeModale1.style.display = "block";
-            imagePreview.src = "undifined";
     });
 
         fileImage.addEventListener("click", function() {
@@ -204,14 +202,11 @@ function compare( a, b ) {
     }
         modal2Close.addEventListener("click", function() {
             modal2.style.display = "none";
-            imagePreview.src = "undifined";
     });
 
         buttonaddPhoto .addEventListener("click", event => {
             event.preventDefault();
     });
-
-    
 
     const form = document.getElementById("form-post");
     const image = document.getElementById("file-image");
@@ -246,6 +241,7 @@ function compare( a, b ) {
         .then(postWorks => postWorks.json())
         .then(data => {
             console.log(data);
+            genererProjectsModale(modalProjects);
     // Réinitialisation du formulaire et de la prévisualisation de l'image
         })
         .catch(error => console.error('Erreur lors de l\'ajout du projet :', error));
@@ -253,7 +249,8 @@ function compare( a, b ) {
 }
 
 /********* SUPPRESSION DE PROJET **********/
-function deleteProjects(workId, worksModale) {
+function deleteProjects(workId, worksModale,worksaGenerer) {
+    document.getElementById("gallery-photo").innerHTML = ""; //  remise a zero
     const token = localStorage.getItem("token")
     fetch(`http://localhost:5678/api/works/${workId}`, {
     method: "DELETE",
@@ -269,11 +266,16 @@ function deleteProjects(workId, worksModale) {
             const worksModaleAfterDelete = worksModale.filter(work => work.id !== workId);
             console.log(worksModaleAfterDelete);
             genererProjectsModale(worksModaleAfterDelete);
+
+            const worksaGenererAfterDelete = worksaGenerer.filter(work => work.id !== work);
+            console.log(worksaGenererAfterDelete);
+            genererWorks(worksaGenererAfterDelete.id, worksaGenerer);
         }
         else {
-            console.error(`Impossible de supprimer ${workId} !`);
+            alert(`Impossible de supprimer ${workId} !`);
         }
     });
+    genererCategories(worksArray, categoriesArray);
 }
 
 const fileimagePreview = document.getElementById("file-image");
@@ -285,7 +287,7 @@ fileimagePreview.onchange = function() {
     }
   }
 
-
-    
-    
-  
+  //async function load() {
+   // works = await fetch("http://localhost:5678/api/works");
+   // works = await works.json();
+  //}

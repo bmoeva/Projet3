@@ -254,11 +254,14 @@ button[type="submit"] {
 }*/
 .iconPoubelle {
 position:relative;
-top: -110px;
+top: -120px;
 background-color: #000000;
 color: #fefefe;
 z-index: 1;
-right: -65px;
+right: -32px;
+border-radius: 2px;
+border: none;
+padding: 5px;
 }
 .back {
 	cursor: pointer;
@@ -277,7 +280,7 @@ right: -65px;
 .gallery-photo-wrapper {
 	height:100%;
 	width:181px;
-	border: 1px solid black;
+	margin-right: 50px;
 }
 .gallery-photo {
 	display: flex;
@@ -287,15 +290,16 @@ right: -65px;
 }
 projets {
 	display: inline-block;
-	background:blue;
-	margin:10px 0 0 10px;
+	margin: 0px 0 0 10px;
 	flex-grow: 1;
-	height:100px;
-	width: calc(100% * (1/5) - 10px - 1px)
+	height:110px;
+	width: 83px;
 }
 #gallery-photo img{
 	width: 100%;
 	height: 100%;
+	right: 25px;
+	position: relative;
 }
 
 .modal, .modal-2 {
@@ -453,7 +457,7 @@ projets {
   }
   #modal-btn-add {
 	background: #1D6154;
-	margin-top: 85px;
+	margin-top: 66px;
 	border-radius: 60px;
 	width: 237px;
 	height: 36px;
@@ -474,7 +478,7 @@ projets {
 	height: 17px;
 	text-align: center;
 	font-weight: 400;
-	margin-top: 32px;
+	margin-top: 25px;
   }
   #gallery-photo i {
 	position: absolute;
@@ -491,7 +495,7 @@ projets {
 	height: 0px;
 	border: 1px solid #B3B3B3;
 	position: absolute;
-	margin: 47px 105px 40px 105px;
+	margin: 32px 105px 40px 105px;
   }
   
   /* The Close Button */
@@ -620,4 +624,8 @@ footer nav ul {
 	right: 0%;
 	bottom: 0%;
 	position: absolute;
+}
+#password-error {
+	margin-top: 5px;
+	color: red;
 }
