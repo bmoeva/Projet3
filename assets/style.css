@@ -629,3 +629,8 @@ footer nav ul {
 	margin-top: 5px;
 	color: red;
 }
+
+/* Voici notre composition pour les champs invalides */
+  #feedback-error {
+	color: red;
+  }
