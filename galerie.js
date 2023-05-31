@@ -1,11 +1,13 @@
 // Récupération de la galerie d'image depuis GET/WORKS (http://localhost:5678/api/works)
 
 init();
-
+console.log("RECHARGEMENT");
+console.log("RECHARGEMENT");
+console.log("RECHARGEMENT");
+console.log("RECHARGEMENT");
+console.log("RECHARGEMENT");
 async function init() {
 
-    const WorksModale = await fetch("http://localhost:5678/api/works");
-    const modalProjects = await WorksModale.json();
 
     // Appel API WORKS
     const responseWorks = await fetch('http://localhost:5678/api/works'); console.log(responseWorks);
@@ -18,8 +20,8 @@ async function init() {
     genererCategories(worksArray, categoriesArray)
     genererWorks(worksArray)
     initOpenModalButton()
-    genererProjectsModale(modalProjects)
-    initbtnaddWork() 
+    genererProjectsModale(worksArray)
+    initbtnaddWork(worksArray) 
 }
 
 //*********FUNCTION POUR L'OUVERTURE DE LA MODALE **********/
@@ -156,7 +158,7 @@ function compare( a, b ) {
 }
 
 //*********FUNCTION POUR L'OUVERTURE DE LA DEUXIEME MODALE **********/
- function initbtnaddWork() {
+ function initbtnaddWork(works) {
 
     let openModal2 = document.getElementById("modal2");
     let buttonaddPhoto = document.getElementById("modal-btn-add"); 
@@ -240,8 +242,12 @@ function compare( a, b ) {
         })
         .then(postWorks => postWorks.json())
         .then(data => {
+            modal2.style.display = "none";
             console.log(data);
-            genererProjectsModale(modalProjects);
+            works.push(data);
+            genererWorks(works);
+            genererProjectsModale(works);
+            
     // Réinitialisation du formulaire et de la prévisualisation de l'image
         })
         .catch(error => console.error('Erreur lors de l\'ajout du projet :', error));
@@ -249,7 +255,7 @@ function compare( a, b ) {
 }
 
 /********* SUPPRESSION DE PROJET **********/
-function deleteProjects(workId, worksModale,worksaGenerer) {
+function deleteProjects(workId, worksModale) {
     document.getElementById("gallery-photo").innerHTML = ""; //  remise a zero
     const token = localStorage.getItem("token")
     fetch(`http://localhost:5678/api/works/${workId}`, {
@@ -267,15 +273,12 @@ function deleteProjects(workId, worksModale,worksaGenerer) {
             console.log(worksModaleAfterDelete);
             genererProjectsModale(worksModaleAfterDelete);
 
-            const worksaGenererAfterDelete = worksaGenerer.filter(work => work.id !== work);
-            console.log(worksaGenererAfterDelete);
-            genererWorks(worksaGenererAfterDelete.id, worksaGenerer);
+           genererWorks(worksModaleAfterDelete);
         }
         else {
             alert(`Impossible de supprimer ${workId} !`);
         }
     });
-    genererCategories(worksArray, categoriesArray);
 }
 
 const fileimagePreview = document.getElementById("file-image");
