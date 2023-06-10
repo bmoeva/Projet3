@@ -214,10 +214,13 @@ function compare( a, b ) {
     const feedbackTitle = document.getElementById("feedback-title");
     const feedbackCategory = document.getElementById("feedback-category");
     const feedbackImage = document.getElementById("feedback-image");
+
     var erreur;
  
     form.addEventListener ('submit', (event) => {
         event.preventDefault();
+
+// AJOUT DES MESSAGES D'ERREUR 
 
         if (!title.value){
             event.preventDefault();
