@@ -127,10 +127,6 @@ function compare( a, b ) {
 
             const worksModalElement = document.createElement("projets");
 
-            //const icon = document.createElement("i");
-            //icon.classList.add("fa-solid", "fa-trash-can");
-            //icon.style.position = "absolute";
-
             const pictureUrlElement = document.createElement("img");
             pictureUrlElement.src = projectsModal.imageUrl; 
             console.log(projectsModal);
@@ -172,8 +168,8 @@ function compare( a, b ) {
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){
         buttonaddPhoto.style.display = "block";
         fileImage.style.display = "none";
-        
 
+        
         buttonaddPhoto.addEventListener("click", function() {
         openModal2.style.display = "block";
     });
@@ -215,10 +211,42 @@ function compare( a, b ) {
     const title = document.getElementById("title");
     const category = document.getElementById("category");
 
-
+    const feedbackTitle = document.getElementById("feedback-title");
+    const feedbackCategory = document.getElementById("feedback-category");
+    const feedbackImage = document.getElementById("feedback-image");
+    var erreur;
+ 
     form.addEventListener ('submit', (event) => {
         event.preventDefault();
 
+        if (!title.value){
+            event.preventDefault();
+            feedbackTitle.textContent = "Veuillez renseigner un Titre !";
+             feedbackTitle.style.color = 'red';
+        }
+        if (!category == [0]) {
+            event.preventDefault();
+            feedbackCategory.textContent = "Veuillez choisir une catégorie !";
+            feedbackCategory.style.color = 'red';
+        }
+
+        if (erreur) {
+            event.preventDefault();
+            document.getElementById("feedback-category", "feedback-title", "feedback-image").innerHTML = erreur;
+            return false;
+        }
+        if (!image.value) {
+            event.preventDefault();
+            feedbackImage.textContent = "Veuillez ajouter un image !";
+            feedbackImage.style.color = 'red';
+        }
+        else {
+            feedbackCategory.textContent = "none";
+            feedbackImage.textContent = "none";
+            feedbackTitle.textContent = "none";
+            alert("Formulaire envoyé !");
+        }
+        
     // Ajout de l'objet FormData pour l'envoi du formulaire
         const formData = new FormData();
         formData.append('title', title.value);
@@ -229,7 +257,6 @@ function compare( a, b ) {
         for (var pair of formData.entries()) {
             console.log(pair[0] + ' : ' + pair[1]);
         }
-        
 
     // Envoi de la requête pour l'ajout de la photo dans la liste de projets
         fetch("http://localhost:5678/api/works", {
@@ -240,17 +267,22 @@ function compare( a, b ) {
             },
             body:formData
         })
+        
         .then(postWorks => postWorks.json())
         .then(data => {
+           event.target.reset();
+           image.files[0] = null;
             modal2.style.display = "none";
             console.log(data);
             works.push(data);
             genererWorks(works);
             genererProjectsModale(works);
-            
-    // Réinitialisation du formulaire et de la prévisualisation de l'image
-        })
-        .catch(error => console.error('Erreur lors de l\'ajout du projet :', error));
+            feedbackCategory.textContent = "none";
+            feedbackImage.textContent = "none";
+            feedbackTitle.textContent = "none";
+             
+ })
+        //.catch(error => console.error('Erreur lors de l\'ajout du projet :', error));
     });
 }
 
@@ -289,8 +321,3 @@ fileimagePreview.onchange = function() {
         imagePreview.src = URL.createObjectURL(file);
     }
   }
-
-  //async function load() {
-   // works = await fetch("http://localhost:5678/api/works");
-   // works = await works.json();
-  //}

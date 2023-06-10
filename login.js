@@ -36,7 +36,7 @@ body: JSON.stringify(idConnexion),
   }
 
 else  {
-    feedbackEmail.textContent = "Erreur dans l’identifiants !";
+    feedbackEmail.textContent = "Erreur dans l’identifiant !";
     inputEmail.style.color = "red";
     feedbackEmail.style.color = "red";
 

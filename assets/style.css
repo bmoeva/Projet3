@@ -625,12 +625,14 @@ footer nav ul {
 	bottom: 0%;
 	position: absolute;
 }
-#password-error {
-	margin-top: 5px;
-	color: red;
+#feedback-image {
+	margin-top: 10px;
 }
-
-/* Voici notre composition pour les champs invalides */
-  #feedback-error {
-	color: red;
-  }
+#feedback-title {
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+#feedback-category {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
