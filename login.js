@@ -7,11 +7,29 @@ async function init() {
   const feedbackPassword = document.getElementById('feedback-password');
   const feedbackEmail = document.getElementById('feedback-email');
   const loginForm = document.getElementById('login');
+  
+  const textErreur = document.getElementById("erreur");
+
+  var erreur;
+
+  var inputs = document.getElementsByTagName("input");
   loginForm.addEventListener('submit', event => {
  
   event.preventDefault();
   event.stopImmediatePropagation();
   console.log(event);
+  for (var i = 0; i < inputs.length; i++) {
+    if(!inputs[i].value) {
+      erreur = "Veuillez renseigner tous les champs !";
+      textErreur.style.color = "red";
+    }
+  }
+
+  if(erreur) {
+    event.preventDefault();
+    document.getElementById("erreur").innerHTML = erreur;
+    return false;
+  }
 
 const idConnexion = {
     email: document.getElementById("email").value,
@@ -34,22 +52,23 @@ body: JSON.stringify(idConnexion),
   if (response.ok) {
     return(response.json());
   }
+  
 
-else  {
-    feedbackEmail.textContent = "Erreur dans l’identifiant !";
-    inputEmail.style.color = "red";
-    feedbackEmail.style.color = "red";
+// else  {
+//     feedbackEmail.textContent = "Erreur dans l’identifiant !";
+//     inputEmail.style.color = "red";
+//     feedbackEmail.style.color = "red";
 
-} if (response.message) {
+// } if (response.message) {
 
-    feedbackPassword.textContent = "Erreur dans le mot de passe !" ;
-    feedbackEmail.textContent = "";
-    inputPassword.style.color = "red";
-    inputEmail.style.color = "#1d6154" ;
+//     feedbackPassword.textContent = "Erreur dans le mot de passe !" ;
+//     feedbackEmail.textContent = "";
+//     inputPassword.style.color = "red";
+//     inputEmail.style.color = "#1d6154" ;
 
-}
+// }
 
-  }) 
+   }) 
   .then((data) =>  {  
     localStorage.setItem("token", data.token),
     window.location.href = "index.html"; //Redirection à la page d'acceuil

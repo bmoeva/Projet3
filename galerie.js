@@ -279,10 +279,9 @@ function compare( a, b ) {
             genererProjectsModale(works);
             feedbackCategory.textContent = "none";
             feedbackImage.textContent = "none";
-            feedbackTitle.textContent = "none";
-             
+            feedbackTitle.textContent = "none";      
  })
-        //.catch(error => console.error('Erreur lors de l\'ajout du projet :', error));
+        //.catch(error => console.error('Erreur lors de l\'ajout du projet :'error'));
     });
 }
 
