@@ -2,7 +2,7 @@
 init();
 
 async function init() {
-  const inputEmail = document.getElementById("email");
+  //const inputEmail = document.getElementById("email");
   const inputPassword = document.getElementById("password");
   const feedbackPassword = document.getElementById('feedback-password');
   const feedbackEmail = document.getElementById('feedback-email');
@@ -18,6 +18,8 @@ async function init() {
   event.preventDefault();
   event.stopImmediatePropagation();
   console.log(event);
+
+  // J'ai créer une boucle, pour afficher un message d'erreur pour tous les champs inputs, si ils ne sont pas remplis 
   for (var i = 0; i < inputs.length; i++) {
     if(!inputs[i].value) {
       erreur = "Veuillez renseigner tous les champs !";
@@ -64,7 +66,6 @@ body: JSON.stringify(idConnexion),
 //     feedbackEmail.textContent = "";
 //     inputPassword.style.color = "red";
 //     inputEmail.style.color = "#1d6154" ;
-
 // }
 
    }) 
@@ -72,10 +73,7 @@ body: JSON.stringify(idConnexion),
     localStorage.setItem("token", data.token),
     window.location.href = "index.html"; //Redirection à la page d'acceuil
     console.log(data);
-
-    inputPassword.style.color = "#1d6154";
-    feedbackPassword.textContent = "";
-    feedbackEmail.textContent = "";
+    textErreur.textContent = "none";
   });
 })}
 
