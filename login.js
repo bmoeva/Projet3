@@ -53,7 +53,6 @@ body: JSON.stringify(idConnexion),
     return(response.json());
   }
   
-
 // else  {
 //     feedbackEmail.textContent = "Erreur dans l’identifiant !";
 //     inputEmail.style.color = "red";
