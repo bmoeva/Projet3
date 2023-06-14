@@ -164,6 +164,7 @@ function compare( a, b ) {
     let closeModale1 = document.getElementById("modal1");
     let readFile = document.getElementById("read-file");
     let infoImage = document.getElementById("info-image");
+    const boutonValider = document.getElementById("btn-valid");
 
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){
         buttonaddPhoto.style.display = "block";
@@ -187,12 +188,16 @@ function compare( a, b ) {
     });
 
         fileImage.addEventListener("click", function() {
-            readFile.style.display = "none";
+            //readFile.style.display = "none";
     });
 
         fileImage.addEventListener("click", function() {
             infoImage.style.display = "none";
     });
+
+        boutonValider.addEventListener("click", function() {
+            modal1.style.display = "block";
+        });
     
     }
     else {
@@ -214,42 +219,39 @@ function compare( a, b ) {
     const feedbackTitle = document.getElementById("feedback-title");
     const feedbackCategory = document.getElementById("feedback-category");
     const feedbackImage = document.getElementById("feedback-image");
-
-    var erreur;
  
     form.addEventListener ('submit', (event) => {
         event.preventDefault();
 
 // AJOUT DES MESSAGES D'ERREUR 
+var valid = true;
+
+            feedbackCategory.textContent = "";
+            feedbackImage.textContent = "";
+            feedbackTitle.textContent = "";
 
         if (!title.value){
             event.preventDefault();
             feedbackTitle.textContent = "Veuillez renseigner un Titre !";
              feedbackTitle.style.color = 'red';
+             valid = false;
         }
-        if (!category == [0]) {
+        if (category.value == "0") {
             event.preventDefault();
             feedbackCategory.textContent = "Veuillez choisir une catégorie !";
             feedbackCategory.style.color = 'red';
+            valid = false;
         }
 
-        if (erreur) {
-            event.preventDefault();
-            document.getElementById("feedback-category", "feedback-title", "feedback-image").innerHTML = erreur;
-            return false;
-        }
         if (!image.value) {
             event.preventDefault();
             feedbackImage.textContent = "Veuillez ajouter un image !";
             feedbackImage.style.color = 'red';
+            valid = false;
         }
-        else {
-            feedbackCategory.textContent = "none";
-            feedbackImage.textContent = "none";
-            feedbackTitle.textContent = "none";
-            alert("Formulaire envoyé !");
-        }
-        
+
+        if (valid) {
+            
     // Ajout de l'objet FormData pour l'envoi du formulaire
         const formData = new FormData();
         formData.append('title', title.value);
@@ -273,18 +275,16 @@ function compare( a, b ) {
         
         .then(postWorks => postWorks.json())
         .then(data => {
-           event.target.reset();
-           image.files[0] = null;
+            //image.files[0]= null;
+            event.target.reset();
+            modal1.style.display = "block";
             modal2.style.display = "none";
             console.log(data);
             works.push(data);
             genererWorks(works);
-            genererProjectsModale(works);
-            feedbackCategory.textContent = "none";
-            feedbackImage.textContent = "none";
-            feedbackTitle.textContent = "none";      
+            genererProjectsModale(works);   console.log(works); 
  })
-        //.catch(error => console.error('Erreur lors de l\'ajout du projet :'error'));
+}
     });
 }
 
