@@ -225,7 +225,8 @@ function compare( a, b ) {
 
 // AJOUT DES MESSAGES D'ERREUR 
 var valid = true;
-
+const btnvalidGreen = document.getElementById("btn-valid");
+            btnvalidGreen.style.display = "red";
             feedbackCategory.textContent = "";
             feedbackImage.textContent = "";
             feedbackTitle.textContent = "";
@@ -234,6 +235,7 @@ var valid = true;
             event.preventDefault();
             feedbackTitle.textContent = "Veuillez renseigner un Titre !";
              feedbackTitle.style.color = 'red';
+             title.style.color = "red";
              valid = false;
         }
         if (category.value == "0") {
@@ -314,7 +316,6 @@ function deleteProjects(workId, worksModale) {
         }
     });
 }
-
 const fileimagePreview = document.getElementById("file-image");
 const imagePreview = document.getElementById("image-preview");
 fileimagePreview.onchange = function() {
@@ -322,4 +323,19 @@ fileimagePreview.onchange = function() {
     if (file) {
         imagePreview.src = URL.createObjectURL(file);
     }
+    inversePreview();
   }
+
+   function inversePreview() {
+    const imagePreview = document.getElementById("image-preview");
+     const iconePreviewDefault = document.getElementById("icone-preview-default");
+     const btnreadFile = document.getElementById("read-file");
+     if (imagePreview.style.display === "block") {
+        imagePreview.style.display = "none";
+         //imagePreviewDefault.style.display = "block";
+     } else {
+         imagePreview.style.display = "block";
+         iconePreviewDefault.style.display = "none";
+         btnreadFile.style.display = "none";
+     }
+ }

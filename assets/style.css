@@ -327,13 +327,6 @@ projets {
 	height: 731px;
 	border-bottom:1px solid #B3B3B3;
   }
-  .add-photo-form {
-	width: 173px;
-	height: 36px;
-	background: #CBD6DC;
-	border-radius: 50px;
-	cursor: pointer;
-  }
   #title-add-photo {
 	font-family: 'Work Sans';
 	font-style: normal;
@@ -392,9 +385,13 @@ projets {
   #btn-valid:hover {
 	background-color: #1D6154;
   }
+  #icone-preview-default {
+	display: block;
+  }
   #image-preview {
 	width: 129px;
 	height: 193px;
+	display: none;
   }
   .icone-image-contenu {
 	display: flex;
@@ -409,21 +406,8 @@ projets {
 	border-radius: 3px;
   }
   .fa-image {
-	width: 58px;
-	height: 46px;
 	font-size: 58px;
 	color: #B9C5CC;
-	margin-bottom: 21px;
-  }
-  #info-image {
-	margin-top: 7px;
-	font-family: 'Work Sans';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 10px;
-	line-height: 12px;
-	text-align: center;
-	color: #444444;
   }
   .close-modal {
 	size: 12.1px;
@@ -436,9 +420,34 @@ projets {
 	align-items: center;
   }
   .add-photo-form {
+	text-align: center;
+	display: block;
+	width: 173px;
+	height: 36px;
+	background: #CBD6DC;
+	border-radius: 50px;
+	cursor: pointer;
+	margin-top: 21px;
+  }
+  #info-image {
+	margin-top: 7px;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+	color: #444444;
+  }
+  #file-image {
 	justify-content: center;
-	display: flex;
 	align-items: center;
+	display: flex;
+	margin-top: 10px;
+	color: rgba(48, 102, 133, 1);
+	font-family: 'work Sans';
+	font-weight: 500;
+	size: 14px;
   }
   #modal-title {
 	font-weight: 400;
