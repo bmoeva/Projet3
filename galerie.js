@@ -284,7 +284,9 @@ const btnvalidGreen = document.getElementById("btn-valid");
             console.log(data);
             works.push(data);
             genererWorks(works);
-            genererProjectsModale(works);   console.log(works); 
+            genererProjectsModale(works);  
+             console.log(works); 
+             inversePreview();
  })
 }
     });
@@ -326,13 +328,17 @@ fileimagePreview.onchange = function() {
     inversePreview();
   }
 
-   function inversePreview() {
+  function inversePreview() {
     const imagePreview = document.getElementById("image-preview");
      const iconePreviewDefault = document.getElementById("icone-preview-default");
      const btnreadFile = document.getElementById("read-file");
+     //const iconClose = document.getElementById('modale-close');
+     const infoImage = document.getElementById('info-image');
      if (imagePreview.style.display === "block") {
         imagePreview.style.display = "none";
-         //imagePreviewDefault.style.display = "block";
+        iconePreviewDefault.style.display = "block";
+        btnreadFile.style.display = "block";
+        infoImage.style.display = 'block';
      } else {
          imagePreview.style.display = "block";
          iconePreviewDefault.style.display = "none";
