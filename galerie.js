@@ -208,7 +208,7 @@ function compare( a, b ) {
     });
 
         buttonaddPhoto .addEventListener("click", event => {
-            event.preventDefault();
+            event.preventDefault();        
     });
 
     const form = document.getElementById("form-post");
@@ -332,8 +332,10 @@ fileimagePreview.onchange = function() {
     const imagePreview = document.getElementById("image-preview");
      const iconePreviewDefault = document.getElementById("icone-preview-default");
      const btnreadFile = document.getElementById("read-file");
-     //const iconClose = document.getElementById('modale-close');
+     const iconClose = document.getElementById('modal-close');
+     const arrowbackModale = document.getElementById("back-modal");
      const infoImage = document.getElementById('info-image');
+
      if (imagePreview.style.display === "block") {
         imagePreview.style.display = "none";
         iconePreviewDefault.style.display = "block";
@@ -343,5 +345,19 @@ fileimagePreview.onchange = function() {
          imagePreview.style.display = "block";
          iconePreviewDefault.style.display = "none";
          btnreadFile.style.display = "none";
+         
      }
+     iconClose.addEventListener("click", function() {
+        iconePreviewDefault.style.display = "block";
+        imagePreview.style.display = "none";  
+        btnreadFile.style.display = "block";
+        infoImage.style.display = "block";
+      });
+
+      arrowbackModale.addEventListener("click", function() {
+        imagePreview.style.display = "none";  
+        btnreadFile.style.display = "block";
+        infoImage.style.display = "block";
+        iconePreviewDefault.style.display = "block";
+      });
  }
