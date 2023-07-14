@@ -324,40 +324,43 @@ fileimagePreview.onchange = function() {
     const [file] = fileimagePreview.files
     if (file) {
         imagePreview.src = URL.createObjectURL(file);
+        inversePreview();
     }
-    inversePreview();
   }
 
-  function inversePreview() {
-    const imagePreview = document.getElementById("image-preview");
-     const iconePreviewDefault = document.getElementById("icone-preview-default");
-     const btnreadFile = document.getElementById("read-file");
-     const iconClose = document.getElementById('modal-close');
-     const arrowbackModale = document.getElementById("back-modal");
-     const infoImage = document.getElementById('info-image');
+const iconClose = document.getElementById('modal-close');
+const arrowbackModale = document.getElementById("back-modal");
+iconClose.addEventListener("click", function() {
+hideElementsOnModal()
+});
 
-     if (imagePreview.style.display === "block") {
-        imagePreview.style.display = "none";
-        iconePreviewDefault.style.display = "block";
-        btnreadFile.style.display = "block";
-        infoImage.style.display = 'block';
-     } else {
-         imagePreview.style.display = "block";
-         iconePreviewDefault.style.display = "none";
-         btnreadFile.style.display = "none";
-         
-     }
-     iconClose.addEventListener("click", function() {
-        iconePreviewDefault.style.display = "block";
-        imagePreview.style.display = "none";  
-        btnreadFile.style.display = "block";
-        infoImage.style.display = "block";
-      });
+arrowbackModale.addEventListener("click", function() {
+hideElementsOnModal()
+});
 
-      arrowbackModale.addEventListener("click", function() {
-        imagePreview.style.display = "none";  
-        btnreadFile.style.display = "block";
-        infoImage.style.display = "block";
-        iconePreviewDefault.style.display = "block";
-      });
+function inversePreview() {
+const imagePreview = document.getElementById("image-preview");
+const iconePreviewDefault = document.getElementById("icone-preview-default");
+const btnreadFile = document.getElementById("read-file");
+
+if (imagePreview.style.display === "block") {
+hideElementsOnModal()
+} else {
+imagePreview.style.display = "block";
+iconePreviewDefault.style.display = "none";
+btnreadFile.style.display = "none";
+
+}
+}
+
+function hideElementsOnModal() {
+const imagePreview = document.getElementById("image-preview");
+const iconePreviewDefault = document.getElementById("icone-preview-default");
+const btnreadFile = document.getElementById("read-file");
+const infoImage = document.getElementById('info-image');
+iconePreviewDefault.style.display = "block";
+imagePreview.style.display = "none";
+btnreadFile.style.display = "block";
+infoImage.style.display = "block";
+
  }

@@ -2,16 +2,10 @@
 init();
 
 async function init() {
-  //const inputEmail = document.getElementById("email");
-  const inputPassword = document.getElementById("password");
-  const feedbackPassword = document.getElementById('feedback-password');
-  const feedbackEmail = document.getElementById('feedback-email');
   const loginForm = document.getElementById('login');
-  
   const textErreur = document.getElementById("erreur");
 
   var erreur;
-
   var inputs = document.getElementsByTagName("input");
   loginForm.addEventListener('submit', event => {
  
@@ -40,6 +34,7 @@ const idConnexion = {
   console.log(idConnexion);
 
 // Appel de la fonction fetch 
+
 fetch('http://localhost:5678/api/users/login', {
 
 method: 'POST',
@@ -54,19 +49,6 @@ body: JSON.stringify(idConnexion),
   if (response.ok) {
     return(response.json());
   }
-  
-// else  {
-//     feedbackEmail.textContent = "Erreur dans l’identifiant !";
-//     inputEmail.style.color = "red";
-//     feedbackEmail.style.color = "red";
-
-// } if (response.message) {
-
-//     feedbackPassword.textContent = "Erreur dans le mot de passe !" ;
-//     feedbackEmail.textContent = "";
-//     inputPassword.style.color = "red";
-//     inputEmail.style.color = "#1d6154" ;
-// }
 
    }) 
   .then((data) =>  {  
