@@ -87,10 +87,6 @@ function genererCategories(works, categoriesaGenerer){
         boutonFiltre.className = "stylebouton";
         console.log(boutonFiltre.outerHTML);
 
-        //const div = document.createElement("div");
-        //div.className = "stylecss";
-        //console.log(div.outerHTML);
-
         boutonFiltre.setAttribute("id", idCategorie)
         boutonFiltre.textContent = nomCategorie;
 
