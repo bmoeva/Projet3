@@ -647,10 +647,10 @@ nav span {
 	display: none;
 }
 
-body.logged-in nav span {
+/*body.logged-in nav span {
 	display: block;
-}
+}*/
 
-body.logged-in nav #login-btn a{
-	display: none;
+ #login-btn{
+	display: block;
 }

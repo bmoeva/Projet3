@@ -4,13 +4,6 @@ init();
 async function init() {
   const loginForm = document.getElementById('login');
   const textErreur = document.getElementById("erreur");
-  document.body.classList.add('logged-in');
-
-  const navSpan = document.querySelector('nav span');
-        navSpan.addEventListener('click', () => {
-            localStorage.removeItem('token');
-            document.body.classList.remove('logged-in');
-        });
 
   var erreur;
   var inputs = document.getElementsByTagName("input");
@@ -56,14 +49,20 @@ body: JSON.stringify(idConnexion),
   if (response.ok) {
     return(response.json());
   }
-
    }) 
   .then((data) =>  {  
+    
     localStorage.setItem("token", data.token),
-    window.location.href = ""; //Redirection à la page d'acceuil
+    window.location.href = "index.html"; //Redirection à la page d'acceuil
     console.log(data);
     textErreur.textContent = "none";
+    
   });
   
-})}
-
+})};
+let loginLogout = document.getElementById("login-btn").innerHTML;
+    document.getElementById("login-btn").innerHTML = loginLogout.replace("login", "logout");
+  loginLogout.addEventListener("click", function() {
+    localStorage.clear("token", data.token),
+    window.location.href = "index.html"; //Redirection à la page d'acceuil
+  })

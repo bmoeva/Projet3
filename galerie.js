@@ -161,14 +161,13 @@ function compare( a, b ) {
     let readFile = document.getElementById("read-file");
     let infoImage = document.getElementById("info-image");
     const boutonValider = document.getElementById("btn-valid");
-
+   
     
     
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){
         buttonaddPhoto.style.display = "block";
         fileImage.style.display = "none";
 
-        
         buttonaddPhoto.addEventListener("click", function() {
         openModal2.style.display = "block";
     });
@@ -196,15 +195,6 @@ function compare( a, b ) {
         boutonValider.addEventListener("click", function() {
             modal1.style.display = "block";
         });
-
-        //document.body.classList.add('logged-in');
-
-        // Add event listener to logout button
-       /* const navSpan = document.querySelector('nav span');
-        navSpan.addEventListener('click', () => {
-            sessionStorage.removeItem('token');
-            document.body.classList.remove('logged-in');
-        });*/
     
     }
     else {
@@ -371,3 +361,12 @@ btnreadFile.style.display = "block";
 infoImage.style.display = "block";
 
  }
+
+ 
+    let loginLogout = document.getElementById("login-btn").innerHTML;
+    document.getElementById("login-btn").innerHTML = loginLogout.replace("login", "logout");
+  loginLogout.addEventListener("click", ()=> {
+    localStorage.removeItem("token", data.token),
+    window.location.href = "index.html"; //Redirection à la page d'acceuil
+  })
+ 
