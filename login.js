@@ -60,8 +60,10 @@ body: JSON.stringify(idConnexion),
 })};
 
 let loginLogout = document.getElementById("login-btn");
+console.log(loginLogout);
   document.getElementById("login-btn").innerText = "logout";
   loginLogout.addEventListener("click", function() {
   localStorage.removeItem("token"),
   window.location.href = "index.html"; //Redirection à la page d'acceuil
 })
+

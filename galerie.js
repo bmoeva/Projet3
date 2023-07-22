@@ -168,8 +168,6 @@ function compare( a, b ) {
         buttonaddPhoto.style.display = "block";
         fileImage.style.display = "none";
 
-        localStorage.removeItem("token"),
-
         buttonaddPhoto.addEventListener("click", function() {
         openModal2.style.display = "block";
     });
