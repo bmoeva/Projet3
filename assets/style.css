@@ -112,17 +112,10 @@ nav li:active {
 	color: black;
 }
 
-/*nav li:active
-nav li:focus {
-	font-weight: 600;
-	color: black;
-}*/
-
 nav li {
 	padding: 0 25px;
 	font-size: 16px;
 }
-
 #instagram {
 	font-size: 10px;
 }
@@ -647,4 +640,17 @@ footer nav ul {
 }
 #erreur {
 	margin-top: 10px;
+}
+
+/* Style lors de la connexion */
+nav span {
+	display: none;
+}
+
+body.logged-in nav span {
+	display: block;
+}
+
+body.logged-in nav #login-btn a{
+	display: none;
 }

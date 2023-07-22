@@ -162,6 +162,8 @@ function compare( a, b ) {
     let infoImage = document.getElementById("info-image");
     const boutonValider = document.getElementById("btn-valid");
 
+    
+    
     if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== ""){
         buttonaddPhoto.style.display = "block";
         fileImage.style.display = "none";
@@ -194,6 +196,15 @@ function compare( a, b ) {
         boutonValider.addEventListener("click", function() {
             modal1.style.display = "block";
         });
+
+        //document.body.classList.add('logged-in');
+
+        // Add event listener to logout button
+       /* const navSpan = document.querySelector('nav span');
+        navSpan.addEventListener('click', () => {
+            sessionStorage.removeItem('token');
+            document.body.classList.remove('logged-in');
+        });*/
     
     }
     else {
