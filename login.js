@@ -56,13 +56,12 @@ body: JSON.stringify(idConnexion),
     window.location.href = "index.html"; //Redirection à la page d'acceuil
     console.log(data);
     textErreur.textContent = "none";
-    
   });
-  
 })};
-let loginLogout = document.getElementById("login-btn").innerHTML;
-    document.getElementById("login-btn").innerHTML = loginLogout.replace("login", "logout");
+
+let loginLogout = document.getElementById("login-btn");
+  document.getElementById("login-btn").innerText = "logout";
   loginLogout.addEventListener("click", function() {
-    localStorage.clear("token", data.token),
-    window.location.href = "index.html"; //Redirection à la page d'acceuil
-  })
+  localStorage.removeItem("token"),
+  window.location.href = "index.html"; //Redirection à la page d'acceuil
+})

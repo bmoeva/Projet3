@@ -168,6 +168,8 @@ function compare( a, b ) {
         buttonaddPhoto.style.display = "block";
         fileImage.style.display = "none";
 
+        localStorage.removeItem("token"),
+
         buttonaddPhoto.addEventListener("click", function() {
         openModal2.style.display = "block";
     });
@@ -359,14 +361,5 @@ iconePreviewDefault.style.display = "block";
 imagePreview.style.display = "none";
 btnreadFile.style.display = "block";
 infoImage.style.display = "block";
-
  }
-
- 
-    let loginLogout = document.getElementById("login-btn").innerHTML;
-    document.getElementById("login-btn").innerHTML = loginLogout.replace("login", "logout");
-  loginLogout.addEventListener("click", ()=> {
-    localStorage.removeItem("token", data.token),
-    window.location.href = "index.html"; //Redirection à la page d'acceuil
-  })
  
